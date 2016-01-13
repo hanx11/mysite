@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from . import views
+from mysite.views import WeixinInterfaceView
+from django.views.decorators.csrf import csrf_exempt    #remove csrf
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.handleRequest, name='handleRequest'),
+    url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]
