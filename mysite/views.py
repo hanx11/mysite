@@ -71,12 +71,12 @@ class WeixinInterfaceView(View):
         #xml = ET.fromstring(str_xml)    #进行XML解析
         msg = parse_msg(request)
         pdb.set_trace()
-        toUserName = xml.find('ToUserName')
-        fromUserName = xml.find('FromUserName').text
-        createTime = xml.find('CreateTime').text
-        msgType = xml.find('MsgType').text
-        content = xml.find('Content').text   #获得用户所输入的内容
-        msgId = xml.find('MsgId').text
+        toUserName = msg['ToUserName']
+        fromUserName = msg['FromUserName']
+        createTime = msg['CreateTime']
+        msgType = msg['MsgType']
+        content = msg['Content']   #获得用户所输入的内容
+        msgId = msg['MsgId']
         return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
