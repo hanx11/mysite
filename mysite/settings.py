@@ -102,6 +102,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
-    './mysite/templates',
+    '~/workspace/mysite/mysite/templates',
 )
 
