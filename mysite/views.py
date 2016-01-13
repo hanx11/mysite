@@ -4,10 +4,11 @@ import os
 import time
 import hashlib
 import json
-from lxml import etree
+import xml.etree.ElementTree as ET
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
+import pdb
 
 def handleRequest(request):
     if request.method == 'GET':
@@ -34,6 +35,15 @@ def checkSignature(request):
 	else:
 		return None 
 
+def parse_msg(request):
+        #解析来自微信的请求，request用于传递请求信息，这是bootle的知识，与微信无关，核心只是普通的url get部分内容
+        recvmsg = request.body 
+        root = ET.fromstring(recvmsg)
+        msg = {}
+        for child in root:
+            msg[child.tag] = child.text
+        return msg
+
 
 class WeixinInterfaceView(View):
     def get(self, request):
@@ -43,7 +53,7 @@ class WeixinInterfaceView(View):
         nonce = request.GET.get('nonce', None)
         echostr = request.GET.get('echostr', None)
         #自己的token
-        token = 'yourtoken' #这里改写你在微信公众平台里输入的token
+        token = 'hanfeng' #这里改写你在微信公众平台里输入的token
         #字典序排序
         tmpList = [token, timestamp, nonce]
         tmpList.sort()
@@ -57,10 +67,11 @@ class WeixinInterfaceView(View):
             return render(request, 'get.html', {'str': echostr},
                           content_type='text/plain')
     def post(self, request):
-        str_xml = request.body.decode('utf-8')    #use body to get raw data
-        xml = etree.fromstring(str_xml)    #进行XML解析
-        
-        toUserName = xml.find('ToUserName').text
+        #str_xml = request.body.decode('utf-8')    #use body to get raw data
+        #xml = ET.fromstring(str_xml)    #进行XML解析
+        msg = parse_msg(request)
+        pdb.set_trace()
+        toUserName = xml.find('ToUserName')
         fromUserName = xml.find('FromUserName').text
         createTime = xml.find('CreateTime').text
         msgType = xml.find('MsgType').text
