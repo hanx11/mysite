@@ -7,8 +7,8 @@ def handleRequest(request):
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
-    else:
-    	return None
+    elif request.method == 'POST':
+    	return HttpResponse("hello world")
 
 def checkSignature(request):
 	TOKEN = "hanfeng"
