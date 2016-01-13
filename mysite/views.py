@@ -3,7 +3,7 @@
 import os
 import time
 import hashlib
-import urllib2, json
+import json
 from lxml import etree
 from django.shortcuts import render
 from django.views.generic.base import View
