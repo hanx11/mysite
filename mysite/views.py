@@ -67,11 +67,9 @@ class WeixinInterfaceView(View):
         if tmpstr == signature:
             return render(request, 'get.html', {'str': echostr},
                           content_type='text/plain')
-            
+
     def post(self, request):
-        #str_xml = request.body.decode('utf-8')    #use body to get raw data
-        #xml = ET.fromstring(str_xml)    #进行XML解析
-        msg = parse_msg(request)
+        msg = parse_msg(request)           #进行XML解析
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
