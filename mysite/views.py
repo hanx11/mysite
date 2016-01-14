@@ -37,7 +37,7 @@ def checkSignature(request):
 		return None 
 
 def parse_msg(request):
-        #解析来自微信的请求，request用于传递请求信息，这是bootle的知识，与微信无关，核心只是普通的url get部分内容
+        #解析来自微信的请求，request用于传递请求信息
         recvmsg = request.body 
         root = ET.fromstring(recvmsg)
         msg = {}
