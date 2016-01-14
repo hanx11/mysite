@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '~/workspace/mysite/mysite/templates',
+            '~/workspace/mysite/mysite/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -104,5 +104,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
+    r'~/workspace/mysite/mysite/templates/',
 )
