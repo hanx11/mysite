@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '~/workspace/mysite/mysite/templates/',
+            '~/workspace/mysite/mysite/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -70,8 +70,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+print(TEMPLATES[0]['DIRS'])
 
+WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
