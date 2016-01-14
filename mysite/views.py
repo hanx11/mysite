@@ -15,8 +15,8 @@ def handleRequest(request):
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
-    elif request.method == 'POST':
-    	return HttpResponse("hello world")
+    else:
+        return None
 
 def checkSignature(request):
 	TOKEN = "hanfeng"
@@ -67,6 +67,7 @@ class WeixinInterfaceView(View):
         if tmpstr == signature:
             return render(request, 'get.html', {'str': echostr},
                           content_type='text/plain')
+            
     def post(self, request):
         #str_xml = request.body.decode('utf-8')    #use body to get raw data
         #xml = ET.fromstring(str_xml)    #进行XML解析
