@@ -78,9 +78,7 @@ class WeixinInterfaceView(View):
         msgType = msg['MsgType']
         content = msg['Content']   #获得用户所输入的内容
         msgId = msg['MsgId']
-        template = get_template('hello.html')
-        html = template.render({'name': 'world'}, request)
-        return render(request, './templates/reply_text.xml',
+        return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
                        'createTime': time.time(),
