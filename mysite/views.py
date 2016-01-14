@@ -71,7 +71,6 @@ class WeixinInterfaceView(View):
         #str_xml = request.body.decode('utf-8')    #use body to get raw data
         #xml = ET.fromstring(str_xml)    #进行XML解析
         msg = parse_msg(request)
-        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
