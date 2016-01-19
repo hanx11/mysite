@@ -54,7 +54,7 @@ class WeixinInterfaceView(View):
         nonce = request.GET.get('nonce', None)
         echostr = request.GET.get('echostr', None)
         #自己的token
-        token = 'hanfeng' #这里改写你在微信公众平台里输入的token
+        token = 'xiaoxiao'   #这里改写你在微信公众平台里输入的token
         #字典序排序
         tmpList = [token, timestamp, nonce]
         tmpList.sort()
