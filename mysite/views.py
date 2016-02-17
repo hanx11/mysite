@@ -18,7 +18,6 @@ YOUDAO_KEY = "692856525"
 YOUDAO_DOC_TYPE = "xml"
 
 def handleRequest(request):
-    pdb.set_trace()
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
@@ -126,7 +125,6 @@ class WeixinInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)           #进行XML解析
-        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
