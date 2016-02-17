@@ -125,6 +125,7 @@ class WeixinInterfaceView(View):
                           content_type='text/plain')
 
     def post(self, request):
+        pdb.set_trace()
         msg = parse_msg(request)           #进行XML解析
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
