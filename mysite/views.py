@@ -9,7 +9,6 @@ import xml.etree.ElementTree as ET
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
-from django.template.loader import get_template
 import pdb
 
 
