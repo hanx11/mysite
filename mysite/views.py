@@ -142,7 +142,6 @@ class WeixinInterfaceView(View):
 
 class YouDaoInterfaceView(View):
     def get(self, request):
-        pdb.set_trace()
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
 
