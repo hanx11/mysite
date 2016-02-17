@@ -147,13 +147,13 @@ class WeixinInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)           #进行XML解析
-        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
         msgType = msg['MsgType']
         content = msg['Content']   #获得用户所输入的内容
         msgId = msg['MsgId']
+        pdb.set_trace()
         return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
