@@ -12,11 +12,10 @@ from django.http import HttpResponse
 import pdb
 
 
-
+TOKEN = "xiaoxiao"
 YOUDAO_KEY_FROM = "hanfeng"
 YOUDAO_KEY = "692856525"
 YOUDAO_DOC_TYPE = "xml"
-
 
 def handleRequest(request):
     pdb.set_trace()
@@ -27,7 +26,6 @@ def handleRequest(request):
         return None
 
 def checkSignature(request):
-	TOKEN = "xiaoxiao"
 	signature = request.GET.get("signature", None)  
 	timestamp = request.GET.get("timestamp", None)  
 	nonce = request.GET.get("nonce", None)  
@@ -98,10 +96,15 @@ def paraseYouDaoXml(rootElem):
                     replyContent = '%s%s\n' % (replyContent,'--')
     return replyContent
 
+def getReplyXml(msg,replyContent):
+    extTpl = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>";
+    extTpl = extTpl % (msg['FromUserName'],msg['ToUserName'],str(int(time.time())),'text',replyContent)
+    return extTpl
+
 
 class WeixinInterfaceView(View):
     def get(self, request):
-        #得到GET内容
+        # 得到GET内容
         signature = request.GET.get('signature', None)
         timestamp = request.GET.get('timestamp', None)
         nonce = request.GET.get('nonce', None)
@@ -143,8 +146,7 @@ class WeixinInterfaceView(View):
 
 class YouDaoInterfaceView(View):
     def get(self, request):
-        response = HttpResponse(checkSignature(request), content_type="text/plain")
-        return response
+        return HttpResponse(checkSignature(request), content_type="text/plain")
 
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
@@ -152,6 +154,6 @@ class YouDaoInterfaceView(View):
         queryStr = msg.get('Content','You have input nothing~')
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'xml', 'version':'1.1', 'q':queryStr}
         result = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
-        pass
-
+        replyContent = paraseYouDaoXml(ET.fromstring(result.content))
+        return getReplyXml(msg,replyContent)
 
