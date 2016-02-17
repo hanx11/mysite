@@ -21,5 +21,5 @@ from django.views.decorators.csrf import csrf_exempt    #remove csrf
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
+    url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]
