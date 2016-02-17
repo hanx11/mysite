@@ -46,6 +46,7 @@ def checkSignature(request):
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
+    pdb.set_trace()
     recvmsg = request.body 
     root = ET.fromstring(recvmsg)
     msg = {}
