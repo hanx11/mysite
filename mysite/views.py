@@ -145,6 +145,7 @@ class WeixinInterfaceView(View):
 
 class YouDaoInterfaceView(View):
     def get(self, request):
+        pdb.set_trace()
         #得到GET内容
         signature = request.GET.get('signature', None)
         timestamp = request.GET.get('timestamp', None)
