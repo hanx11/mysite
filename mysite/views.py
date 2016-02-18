@@ -142,7 +142,6 @@ class YouDaoInterfaceView(View):
         msgType = msg['MsgType']
         content = replyContent   # 获得有道翻译返回的内容
         msgId = msg['MsgId']
-        print(replyContent)
         return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
