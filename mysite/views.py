@@ -50,10 +50,10 @@ def parse_msg(request):
         msg[child.tag] = child.text
     return msg
 
-def parseYouDaoResponse(response):
+def parseYouDaoResponse(rep):
     replyContent = ''
     # pdb.set_trace()
-    result = json.loads(response.text)
+    result = json.loads(rep.text)
     errorCode = result.get('errorCode')
     # 错误码检查
     if errorCode == '20':
@@ -145,7 +145,7 @@ class YouDaoInterfaceView(View):
                        'fromUserName': toUserName,
                        'createTime': time.time(),
                        'msgType': msgType,
-                       'content': content,
+                       'content': '123',
                        },
                        content_type = 'application/xml'
         )
