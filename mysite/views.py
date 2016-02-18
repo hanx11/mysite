@@ -54,7 +54,9 @@ def parseYouDaoResponse(rep):
     replyContent = ''
     # pdb.set_trace()
     result = json.loads(rep.text)
+    print(result)
     errorCode = result.get('errorCode')
+    print(errorCode)
     # 错误码检查
     if errorCode == '20':
         replyContent = "Too long to translate\n"
