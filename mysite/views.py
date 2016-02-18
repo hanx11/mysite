@@ -73,7 +73,8 @@ def parseYouDaoResponse(rep):
         translation = result.get('translation')[0].encode('utf-8')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')[0]
-        replyContent = '123'
+        replyContent = translation
+        print(replyContent)
         return replyContent
 
 def getReplyXml(msg,replyContent):
@@ -140,12 +141,13 @@ class YouDaoInterfaceView(View):
         msgType = msg['MsgType']
         content = replyContent   # 获得有道翻译返回的内容
         msgId = msg['MsgId']
+        print(replyContent)
         return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
                        'createTime': time.time(),
                        'msgType': msgType,
-                       'content': '123',
+                       'content': replyContent,
                        },
                        content_type = 'application/xml'
         )
