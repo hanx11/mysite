@@ -56,13 +56,15 @@ def parseYouDaoResponse(response):
     errorCode = result.get('errorCode')
     # 错误码检查
     if errorCode == '20':
-        return "Too long to translate\n"
+        replyContent = "Too long to translate\n"
+        return replyContent
     elif errorCode == '30':
-        return "Can not be able to translate with effect\n"
+        replyContent = "Can not be able to translate with effect\n"
+        return replyContent
     elif errorCode == '40':
-        return "Can not be able to support this language\n"
+        return  replyContent = "Can not be able to support this language\n"
     elif errorCode == '50':
-        return "Invalid key\n"
+        return  replyContent = "Invalid key\n"
     elif errorCode == '0':
         queryData = result.get('query')
         translation = result.get('translation')
