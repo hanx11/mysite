@@ -54,7 +54,6 @@ def parseYouDaoResponse(rep):
     replyContent = ''
     # pdb.set_trace()
     result = json.loads(rep.text)
-    print(result)
     errorCode = result.get('errorCode')
     print(errorCode)
     # 错误码检查
@@ -75,8 +74,8 @@ def parseYouDaoResponse(rep):
         translation = result.get('translation')[0].encode('utf-8')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')[0]
+        print(translation)
         replyContent = translation
-        print(replyContent)
         return replyContent
 
 def getReplyXml(msg,replyContent):
