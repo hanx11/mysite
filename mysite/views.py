@@ -50,50 +50,26 @@ def parse_msg(request):
         msg[child.tag] = child.text
     return msg
 
-def parseYouDaoXml(rootElem):
+def parseYouDaoResponse(response):
     replyContent = ''
-    if rootElem.tag == 'youdao-fanyi':
-        for child in rootElem:
-            # 错误码
-            if child.tag == 'errorCode':
-                if child.text == '20':
-                    return 'too long to translate\n'
-                elif child.text == '30':
-                    return 'can not be able to translate with effect\n'
-                elif child.text == '40':
-                    return 'can not be able to support this language\n'
-                elif child.text == '50':
-                    return 'invalid key\n'
-
-            # 查询字符串
-            elif child.tag == 'query':
-                replyContent = "%s%s\n" % (replyContent, child.text)
-
-            # 有道翻译
-            elif child.tag == 'translation': 
-                replyContent = '%s%s\n%s\n' % (replyContent, '-' * 3 + u'有道翻译' + '-' * 3, child[0].text)
-
-            # 有道词典-基本词典
-            elif child.tag == 'basic': 
-                replyContent = "%s%s\n" % (replyContent, '-' * 3 + u'基本词典' + '-' * 3)
-                for c in child:
-                    if c.tag == 'phonetic':
-                        replyContent = '%s%s\n' % (replyContent, c.text)
-                    elif c.tag == 'explains':
-                        for ex in c.findall('ex'):
-                            replyContent = '%s%s\n' % (replyContent, ex.text)
-
-            # 有道词典-网络释义
-            elif child.tag == 'web': 
-                replyContent = "%s%s\n" % (replyContent, '-' * 3 + u'网络释义' + '-' * 3)
-                for explain in child.findall('explain'):
-                    for key in explain.findall('key'):
-                        replyContent = '%s%s\n' % (replyContent, key.text)
-                    for value in explain.findall('value'):
-                        for ex in value.findall('ex'):
-                            replyContent = '%s%s\n' % (replyContent, ex.text)
-                    replyContent = '%s%s\n' % (replyContent,'--')
-    return replyContent
+    result = json.loads(response.text)
+    errorCode = result.get('errorCode')
+    # 错误码检查
+    if errorCode == '20':
+        return "Too long to translate\n"
+    elif errorCode == '30':
+        return "Can not be able to translate with effect\n"
+    elif errorCode == '40':
+        return "Can not be able to support this language\n"
+    elif errorCode == '50':
+        return "Invalid key\n"
+    elif errorCode == '0':
+        queryData = result.get('query')
+        translation = result.get('translation')
+        basicPhonetic = result.get('basic').get('phonetic')
+        basicExplains = result.get('basic').get('explains')
+        replyContent = "%s\n%s\n%s\n%s\n" % (queryData, translation, basicPhonetic, basicExplains)
+        return replyContent
 
 def getReplyXml(msg,replyContent):
     extTpl = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>";
@@ -150,8 +126,22 @@ class YouDaoInterfaceView(View):
         msg = parse_msg(request)      #进行xml解析
         pdb.set_trace()
         queryStr = msg.get('Content', 'You have input nothing~')
-        query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'xml', 'version':'1.1', 'q':queryStr}
-        result = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
-        replyContent = parseYouDaoXml(ET.fromstring(result.text))
-        return getReplyXml(msg, replyContent)
+        query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
+        response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
+        replyContent = parseYouDaoResponse(response)
+        toUserName = msg['ToUserName']
+        fromUserName = msg['FromUserName']
+        createTime = msg['CreateTime']
+        msgType = msg['MsgType']
+        content = replyContent   # 获得有道翻译返回的内容
+        msgId = msg['MsgId']
+        return render(request, 'reply_text.xml',
+                      {'toUserName': fromUserName,
+                       'fromUserName': toUserName,
+                       'createTime': time.time(),
+                       'msgType': msgType,
+                       'content': content,
+                       },
+                       content_type = 'application/xml'
+        )
 
