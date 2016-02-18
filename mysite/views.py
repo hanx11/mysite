@@ -70,10 +70,10 @@ def parseYouDaoResponse(response):
         return replyContent
     elif errorCode == '0':
         queryData = result.get('query')
-        translation = result.get('translation')
+        translation = result.get('translation')[0]
         basicPhonetic = result.get('basic').get('phonetic')
-        basicExplains = result.get('basic').get('explains')
-        replyContent = queryData
+        basicExplains = result.get('basic').get('explains')[0]
+        replyContent = translation
         return replyContent
 
 def getReplyXml(msg,replyContent):
