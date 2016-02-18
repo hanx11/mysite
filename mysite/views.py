@@ -73,7 +73,7 @@ def parseYouDaoResponse(response):
         translation = result.get('translation')[0].encode('utf-8')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')[0]
-        replyContent = translation
+        replyContent = '123'
         return replyContent
 
 def getReplyXml(msg,replyContent):
