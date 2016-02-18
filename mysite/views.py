@@ -52,6 +52,7 @@ def parse_msg(request):
 
 def parseYouDaoResponse(response):
     replyContent = ''
+    pdb.set_trace()
     result = json.loads(response.text)
     errorCode = result.get('errorCode')
     # 错误码检查
