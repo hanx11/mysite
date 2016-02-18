@@ -62,15 +62,17 @@ def parseYouDaoResponse(response):
         replyContent = "Can not be able to translate with effect\n"
         return replyContent
     elif errorCode == '40':
-        return  replyContent = "Can not be able to support this language\n"
+        replyContent = "Can not be able to support this language\n"
+        return replyContent
     elif errorCode == '50':
-        return  replyContent = "Invalid key\n"
+        replyContent = "Invalid key\n"
+        return replyContent
     elif errorCode == '0':
         queryData = result.get('query')
         translation = result.get('translation')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')
-        replyContent = "%s\n%s\n%s\n%s\n" % (queryData, translation, basicPhonetic, basicExplains)
+        replyContent = translation
         return replyContent
 
 def getReplyXml(msg,replyContent):
