@@ -55,6 +55,7 @@ def parse_msg(request):
     msg['CreateTime'] = soup.createtime.text
     msg['MsgType'] = soup.msgtype.text
     msg['Content'] = soup.content.text
+    msg['MsgId'] = soup.msgid.text
     return msg
 
 def parseYouDaoResponse(rep):
