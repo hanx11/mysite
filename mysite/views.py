@@ -132,9 +132,9 @@ class YouDaoInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
-        pdb.set_trace()
+        # pdb.set_trace()
         queryStr = msg.get('Content', 'You have input nothing~')
-        print(type(queryStr))
+        print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
