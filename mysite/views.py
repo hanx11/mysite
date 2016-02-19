@@ -46,6 +46,7 @@ def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
     # recvmsg = request.body
     # root = ET.fromstring(recvmsg)
+    pdb.set_trace()
     msg = {}
     # for child in root:
         # msg[child.tag] = child.text
