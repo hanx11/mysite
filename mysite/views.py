@@ -46,7 +46,7 @@ def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
     # recvmsg = request.body
     # root = ET.fromstring(recvmsg)
-    # msg = {}
+    msg = {}
     # for child in root:
         # msg[child.tag] = child.text
     soup = BeautifulSoup(request.body, 'html.parser')
@@ -56,6 +56,7 @@ def parse_msg(request):
     msg['MsgType'] = soup.msgtype.text
     msg['Content'] = soup.content.text
     msg['MsgId'] = soup.msgid.text
+    print(msg['Content'])
     return msg
 
 def parseYouDaoResponse(rep):
