@@ -6,6 +6,7 @@ import json
 import hashlib
 import requests
 import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
@@ -43,14 +44,17 @@ def checkSignature(request):
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
-    recvmsg = request.body
-    print(request.body) 
-    root = ET.fromstring(recvmsg)
-    print(root)
-    msg = {}
-    for child in root:
-        msg[child.tag] = child.text
-        print(child.tag, child.text)
+    # recvmsg = request.body
+    # root = ET.fromstring(recvmsg)
+    # msg = {}
+    # for child in root:
+        # msg[child.tag] = child.text
+    soup = BeautifulSoup(request.body, 'html.parser')
+    msg['ToUserName'] = soup.tousername.text
+    msg['FromUserName'] = soup.fromusername.text
+    msg['CreateTime'] = soup.createtime.text
+    msg['MsgType'] = soup.msgtype.text
+    msg['Content'] = soup.content.text
     return msg
 
 def parseYouDaoResponse(rep):
@@ -137,8 +141,8 @@ class YouDaoInterfaceView(View):
         msg = parse_msg(request)      #进行xml解析
         # print(type(msg))
         # pdb.set_trace()
-        queryStr = '你好'
-        # print(queryStr)
+        queryStr = msg['Content']
+        print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
