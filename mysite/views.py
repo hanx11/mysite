@@ -47,6 +47,7 @@ def parse_msg(request):
     # recvmsg = request.body
     # root = ET.fromstring(recvmsg)
     msg = {}
+    pdb.set_trace()
     # for child in root:
         # msg[child.tag] = child.text
     soup = BeautifulSoup(request.body, 'html.parser')
@@ -117,7 +118,6 @@ class WeixinInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)           #进行XML解析
-        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
