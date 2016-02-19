@@ -48,6 +48,7 @@ def parse_msg(request):
     msg = {}
     for child in root:
         msg[child.tag] = child.text
+        print(child.tag, child.text)
     return msg
 
 def parseYouDaoResponse(rep):
@@ -132,9 +133,9 @@ class YouDaoInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
-        print(type(msg))
+        # print(type(msg))
         # pdb.set_trace()
-        # queryStr = msg['Content']
+        queryStr = '你好'
         # print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
