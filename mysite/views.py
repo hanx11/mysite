@@ -74,7 +74,7 @@ def parseYouDaoResponse(rep):
         translation = result.get('translation', '123')[0].encode('utf-8')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')[0]
-        print(translation)
+        # print(translation)
         replyContent = translation
         return replyContent
 
