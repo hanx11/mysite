@@ -143,7 +143,7 @@ class YouDaoInterfaceView(View):
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
         # print(type(msg))
-        # pdb.set_trace()
+        pdb.set_trace()
         queryStr = msg['Content']
         # print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
