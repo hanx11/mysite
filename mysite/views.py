@@ -46,7 +46,6 @@ def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
     # recvmsg = request.body
     # root = ET.fromstring(recvmsg)
-    pdb.set_trace()
     msg = {}
     # for child in root:
         # msg[child.tag] = child.text
@@ -57,7 +56,6 @@ def parse_msg(request):
     msg['MsgType'] = soup.msgtype.text
     msg['Content'] = soup.content.text
     msg['MsgId'] = soup.msgid.text
-    print(msg['Content'])
     return msg
 
 def parseYouDaoResponse(rep):
@@ -119,6 +117,7 @@ class WeixinInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)           #进行XML解析
+        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = msg['CreateTime']
@@ -143,7 +142,6 @@ class YouDaoInterfaceView(View):
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
         # print(type(msg))
-        pdb.set_trace()
         queryStr = msg['Content']
         # print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
