@@ -143,7 +143,7 @@ class YouDaoInterfaceView(View):
         # print(type(msg))
         # pdb.set_trace()
         queryStr = msg['Content']
-        print(queryStr)
+        # print(queryStr)
         # print(msg.get('Content').encode('utf-8'))
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
