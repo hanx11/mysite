@@ -61,6 +61,13 @@ def parse_msg(request):
     # msg['MsgId'] = soup.msgid.text
     return msg
 
+def weiXinInterfaceView(request):
+    if request.method == 'GET':
+        return HttpResponse(checkSignature(request), content_type="text/plain")
+    elif request.method == 'POST':
+        pdb.set_trace()
+        msg = parse_msg(request)
+
 def parseYouDaoResponse(rep):
     replyContent = ''
     # pdb.set_trace()
