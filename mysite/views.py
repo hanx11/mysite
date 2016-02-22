@@ -27,21 +27,20 @@ def handleRequest(request):
         return None
 
 def checkSignature(request):
-	signature = request.GET.get("signature", None)  
-	timestamp = request.GET.get("timestamp", None)  
-	nonce = request.GET.get("nonce", None)  
-	echoStr = request.GET.get("echostr", None)  
-
-	token = TOKEN  
-	tmpList = [token, timestamp, nonce]  
-	tmpList.sort()  
-	tmpstr = "%s%s%s" % tuple(tmpList)
-	tmpstr = tmpstr.encode('utf-8')  
-	tmpstr = hashlib.sha1(tmpstr).hexdigest()  
-	if tmpstr == signature:
-		return echoStr  
-	else:
-		return None 
+    signature = request.GET.get("signature", None)  
+    timestamp = request.GET.get("timestamp", None)
+    nonce = request.GET.get("nonce", None)
+    echoStr = request.GET.get("echostr", None)  
+    token = TOKEN  
+    tmpList = [token, timestamp, nonce]  
+    tmpList.sort()  
+    tmpstr = "%s%s%s" % tuple(tmpList)
+    tmpstr = tmpstr.encode('utf-8')  
+    tmpstr = hashlib.sha1(tmpstr).hexdigest()  
+    if tmpstr == signature:
+        return echoStr
+    else:
+        return None 
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
