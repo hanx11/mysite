@@ -19,6 +19,7 @@ YOUDAO_KEY = "692856525"
 YOUDAO_DOC_TYPE = "xml"
 
 def handleRequest(request):
+    pdb.set_trace()
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
