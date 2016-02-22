@@ -62,6 +62,7 @@ def parse_msg(request):
     return msg
 
 def weiXinInterfaceView(request):
+    pdb.set_trace()
     if request.method == 'GET':
         return HttpResponse(checkSignature(request), content_type="text/plain")
     elif request.method == 'POST':
