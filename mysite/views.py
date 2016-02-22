@@ -65,8 +65,9 @@ def weiXinInterfaceView(request):
     if request.method == 'GET':
         return HttpResponse(checkSignature(request), content_type="text/plain")
     elif request.method == 'POST':
-        pdb.set_trace()
-        msg = parse_msg(request)
+        # pdb.set_trace()
+        # msg = parse_msg(request)
+        return HttpResponse("hello", content_type="text/plain")
 
 def parseYouDaoResponse(rep):
     replyContent = ''
