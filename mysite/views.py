@@ -91,6 +91,7 @@ def getReplyXml(msg,replyContent):
 class WeixinInterfaceView(View):
     def get(self, request):
         # 得到GET内容
+        pdb.set_trace()
         signature = request.GET.get('signature', None)
         timestamp = request.GET.get('timestamp', None)
         nonce = request.GET.get('nonce', None)
