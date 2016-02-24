@@ -24,7 +24,7 @@ def handleRequest(request):
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
     else:
-        return None
+        return HttpResponse("hello")
 
 def checkSignature(request):
     signature = request.GET.get("signature", None)  
