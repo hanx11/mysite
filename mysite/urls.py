@@ -18,6 +18,7 @@ from django.contrib import admin
 
 from mysite import views
 from mysite.views import handleRequest
+from mysite.views import handleWeiXinInterfaceView
 from mysite.views import WeixinInterfaceView, YouDaoInterfaceView
 from django.views.decorators.csrf import csrf_exempt    #remove csrf
 
@@ -25,7 +26,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', csrf_exempt(handleRequest), name='handleRequest'),
 
-    url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
+    url(r'^$', csrf_exempt(handleWeiXinInterfaceView), name='handleWeiXinInterfaceView'),
+
+    # url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 
     # url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]
