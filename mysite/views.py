@@ -85,10 +85,10 @@ def parseYouDaoResponse(rep):
 
 def handleWeiXinInterfaceView(request):
     if request.method == 'GET':
-        pdb.set_trace()
+        # pdb.set_trace()
         print('get')
     elif request.method == 'POST':
-        pdb.set_trace()
+        # pdb.set_trace()
         print('post')
     else:
         return None
