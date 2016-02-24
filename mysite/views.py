@@ -19,12 +19,11 @@ YOUDAO_KEY = "692856525"
 YOUDAO_DOC_TYPE = "xml"
 
 def handleRequest(request):
-    pdb.set_trace()
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
         return response
     else:
-        return HttpResponse("hello")
+        return None
 
 def checkSignature(request):
     signature = request.GET.get("signature", None)  
@@ -47,7 +46,6 @@ def parse_msg(request):
     recvmsg = request.body
     root = ET.fromstring(recvmsg)
     msg = {}
-    # pdb.set_trace()
     for child in root:
         msg[child.tag] = child.text
         print(child.tag, child.text)
@@ -61,7 +59,6 @@ def parse_msg(request):
     return msg
 
 def weiXinInterfaceView(request):
-    pdb.set_trace()
     if request.method == 'GET':
         return HttpResponse(checkSignature(request), content_type="text/plain")
     elif request.method == 'POST':
@@ -90,11 +87,9 @@ def parseYouDaoResponse(rep):
         return replyContent
     elif errorCode == '0':
         queryData = result.get('query')
-        print(queryData)
         translation = result.get('translation', '123')[0].encode('utf-8')
         basicPhonetic = result.get('basic').get('phonetic')
         basicExplains = result.get('basic').get('explains')[0]
-        # print(translation)
         replyContent = translation
         return replyContent
 
@@ -127,7 +122,6 @@ class WeixinInterfaceView(View):
                           content_type='text/plain')
 
     def post(self, request):
-        pdb.set_trace()
         msg = parse_msg(request)           #进行XML解析
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
@@ -152,7 +146,6 @@ class YouDaoInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
-        pdb.set_trace()
         queryStr = msg['Content']
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
