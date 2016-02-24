@@ -17,13 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from mysite import views
+from mysite.views import handleRequest
 # from mysite.views import WeixinInterfaceView, YouDaoInterfaceView, handleRequest
 # from mysite.views import weiXinInterfaceView
 from django.views.decorators.csrf import csrf_exempt    #remove csrf
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', csrf_exempt(views.handleRequest), name='handleRequest'),
+    url(r'^$', csrf_exempt(handleRequest), name='handleRequest'),
     # url(r'^$', csrf_exempt(views.weiXinInterfaceView), name='handleWeiXinRequest'),
     # url(r'^$', csrf_exempt(views.WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 
