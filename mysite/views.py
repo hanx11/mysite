@@ -43,28 +43,17 @@ def checkSignature(request):
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
-    recvmsg = request.body
-    root = ET.fromstring(recvmsg)
+    # recvmsg = request.body
+    # root = ET.fromstring(recvmsg)
     msg = {}
-    for child in root:
-        msg[child.tag] = child.text
-        print(child.tag, child.text)
-    # soup = BeautifulSoup(request.body, 'html.parser')
-    # msg['ToUserName'] = soup.tousername.text
-    # msg['FromUserName'] = soup.fromusername.text
-    # msg['CreateTime'] = soup.createtime.text
-    # msg['MsgType'] = soup.msgtype.text
-    # msg['Content'] = soup.content.text
-    # msg['MsgId'] = soup.msgid.text
+    soup = BeautifulSoup(request.body, 'html.parser')
+    msg['ToUserName'] = soup.tousername.text
+    msg['FromUserName'] = soup.fromusername.text
+    msg['CreateTime'] = soup.createtime.text
+    msg['MsgType'] = soup.msgtype.text
+    msg['Content'] = soup.content.text
+    msg['MsgId'] = soup.msgid.text
     return msg
-
-def weiXinInterfaceView(request):
-    if request.method == 'GET':
-        return HttpResponse(checkSignature(request), content_type="text/plain")
-    elif request.method == 'POST':
-        # pdb.set_trace()
-        # msg = parse_msg(request)
-        return HttpResponse("hello", content_type="text/plain")
 
 def parseYouDaoResponse(rep):
     replyContent = ''
