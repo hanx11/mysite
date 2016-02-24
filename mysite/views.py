@@ -16,7 +16,7 @@ def handleRequest(request):
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type='text/plain')
         return response
-    else:
+    elif request.method == 'POST':
         return HttpResponse('hello')
 
 def checkSignature(request):
