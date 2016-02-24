@@ -81,34 +81,7 @@ def parseYouDaoResponse(rep):
         basicExplains = result.get('basic').get('explains')[0]
         replyContent = translation
         return replyContent
-
-
-def handleWeiXinInterfaceView(request):
-    if request.method == 'GET':
-        signature = request.GET.get('signature', None)
-        timestamp = request.GET.get('timestamp', None)
-        nonce = request.GET.get('nonce', None)
-        echostr = request.GET.get('echostr', None)
-        #自己的token
-        token = 'xiaoxiao'   #这里改写你在微信公众平台里输入的token
-        #字典序排序
-        tmpList = [token, timestamp, nonce]
-        tmpList.sort()
-        tmpstr = '%s%s%s' % tuple(tmpList)
-        tmpstr = tmpstr.encode('utf-8')
-        #sha1加密算法
-        tmpstr = hashlib.sha1(tmpstr).hexdigest()
-        #如果是来自微信的请求，则回复echostr
-        if tmpstr == signature:
-            return render(request, 'get.html', {'str': echostr},
-                          content_type='text/plain')
-    elif request.method == 'POST':
-        pdb.set_trace()
-        print('post')
-        return HttpResponse('post')
-    else:
-        return None
-
+        
 
 class WeixinInterfaceView(View):
     def get(self, request):
