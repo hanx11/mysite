@@ -49,6 +49,7 @@ def parse_msg(request):
     msg = {}
     for child in root:
         msg[child.tag] = child.text
+        print(child.tag, child.text)
     return msg
 
 def parseYouDaoResponse(rep):
