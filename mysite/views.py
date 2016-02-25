@@ -27,10 +27,10 @@ def handleRequest(request):
 
 def checkSignature(request):
     pdb.set_trace()
-    signature = request.GET.get("signature", None)  
-    timestamp = request.GET.get("timestamp", None)
-    nonce = request.GET.get("nonce", None)
-    echoStr = request.GET.get("echostr", None)  
+    signature = request.GET.get("signature", "")  
+    timestamp = request.GET.get("timestamp", "")
+    nonce = request.GET.get("nonce", "")
+    echoStr = request.GET.get("echostr", "")  
     token = TOKEN  
     tmpList = [token, timestamp, nonce]  
     tmpList.sort()  
