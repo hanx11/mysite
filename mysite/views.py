@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import os
+import sys
 import time
 import json
 import hashlib
@@ -11,6 +12,8 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
 import pdb
+
+sys.setdefaultencoding('utf8') 
 
 
 TOKEN = "xiaoxiao"
