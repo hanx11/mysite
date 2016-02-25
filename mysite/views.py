@@ -13,7 +13,6 @@ from django.views.generic.base import View
 from django.http import HttpResponse
 import pdb
 
-reload(sys)
 sys.setdefaultencoding('utf8') 
 
 
