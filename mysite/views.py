@@ -56,10 +56,11 @@ def parse_msg(request):
     msg['MsgType'] = soup.msgtype.text
     return msg
 
-def parseYouDaoResponse(rep):
+def parseYouDaoResponse(response):
     replyContent = ''
     pdb.set_trace()
-    result = json.loads(rep.content)
+    content = response.content.encode('utf-8')
+    result = json.loads(content)
     errorCode = result.get('errorCode')
     print(errorCode)
     # 错误码检查
