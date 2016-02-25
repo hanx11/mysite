@@ -58,7 +58,7 @@ def parse_msg(request):
 
 def parseYouDaoResponse(response):
     replyContent = ''
-    pdb.set_trace()
+    # pdb.set_trace()
     content = response.content.decode('utf-8', 'ignore')
     result = json.loads(content)
     errorCode = result.get('errorCode')
@@ -138,9 +138,7 @@ class YouDaoInterfaceView(View):
         print(queryStr)
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
-        pdb.set_trace()
         replyContent = parseYouDaoResponse(response)
-        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = time.time()
