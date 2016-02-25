@@ -57,7 +57,7 @@ def parse_msg(request):
     return msg
 
 def parseYouDaoResponse(response):
-    replyContent = ''
+    replyContent = 'hello'
     pdb.set_trace()
     content = response.content.decode('utf-8')
     result = json.loads(content)
@@ -81,7 +81,6 @@ def parseYouDaoResponse(response):
         # translation = result.get('translation', '123')[0].encode('utf-8')
         # basicPhonetic = result.get('basic').get('phonetic')
         # basicExplains = result.get('basic').get('explains')[0]
-        replyContent = 'hello'
         return replyContent
 
 
