@@ -59,7 +59,7 @@ def parse_msg(request):
 def parseYouDaoResponse(response):
     replyContent = ''
     # pdb.set_trace()
-    content = response.content.decode('utf-8', 'ignore')
+    content = response.content.decode('utf-8', errors='ignore')
     result = json.loads(content)
     errorCode = result.get('errorCode')
     print(errorCode)
