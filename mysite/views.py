@@ -77,10 +77,11 @@ def parseYouDaoResponse(response):
         replyContent = "Invalid key\n"
         return replyContent
     elif errorCode == '0':
-        # queryData = result.get('query')
-        # translation = result.get('translation', '123')[0].encode('utf-8')
-        # basicPhonetic = result.get('basic').get('phonetic')
+        queryData = result.get('query')
+        translation = result.get('translation')[0]
+        explains = result.get('basic').get('explains')[0]
         # basicExplains = result.get('basic').get('explains')[0]
+        replyContent = replyContent + "%s\n" + "--有道翻译--\n" + "%s\n" + "解释:%s\n" % (queryData, translation, explains)  
         return replyContent
 
 
