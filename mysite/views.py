@@ -133,10 +133,11 @@ class YouDaoInterfaceView(View):
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
         queryStr = msg['Content']
-        pdb.set_trace()
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
+        pdb.set_trace()
         replyContent = parseYouDaoResponse(response)
+        pdb.set_trace()
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
         createTime = time.time()
