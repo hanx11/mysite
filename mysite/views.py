@@ -138,13 +138,13 @@ class YouDaoInterfaceView(View):
         replyContent = parseYouDaoResponse(response)
         toUserName = msg['ToUserName']
         fromUserName = msg['FromUserName']
-        createTime = msg['CreateTime']
+        createTime = time.time()
         msgType = msg['MsgType']
         msgId = msg['MsgId']
         return render(request, 'reply_text.xml',
                       {'toUserName': fromUserName,
                        'fromUserName': toUserName,
-                       'createTime': time.time(),
+                       'createTime': createTime,
                        'msgType': msgType,
                        'content': replyContent,
                        },
