@@ -44,13 +44,16 @@ def checkSignature(request):
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
-    recvmsg = request.body
-    print(request.body)
-    root = ET.fromstring(recvmsg)
+    # recvmsg = request.body
+    # print(request.body)
+    # root = ET.fromstring(recvmsg)
     msg = {}
-    for child in root:
-        msg[child.tag] = child.text
-        print(child.tag, child.text)
+    soup = BeautifulSoup(request.body, 'html.parser')
+    msg['ToUserName'] = soup.tousername.text
+    msg['FromUserName'] = soup.fromusername.text
+    msg['Content'] = soup.content.text
+    msg['MsgId'] = soup.msgid.text
+    msg['MsgType'] = soup.msgtype.text
     return msg
 
 def parseYouDaoResponse(rep):
