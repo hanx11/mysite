@@ -26,9 +26,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^$', csrf_exempt(handleRequest), name='handleRequest'),
 
-    url(r'^$', handleWeiXinInterfaceView, name='handleWeiXinInterfaceView'),
+    # url(r'^$', handleWeiXinInterfaceView, name='handleWeiXinInterfaceView'),
 
     # url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 
-    # url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
+    url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]
