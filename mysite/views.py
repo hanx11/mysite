@@ -47,6 +47,7 @@ def parse_msg(request):
     # recvmsg = request.body
     # root = ET.fromstring(recvmsg)
     msg = {}
+    pdb.set_trace()
     soup = BeautifulSoup(request.body, 'html.parser')
     msg['ToUserName'] = soup.tousername.text
     msg['FromUserName'] = soup.fromusername.text
@@ -131,7 +132,6 @@ class YouDaoInterfaceView(View):
         return HttpResponse(checkSignature(request), content_type="text/plain")
 
     def post(self, request):
-        pdb.set_trace()
         msg = parse_msg(request)      #进行xml解析
         queryStr = msg['Content']
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
