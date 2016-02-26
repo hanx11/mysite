@@ -83,11 +83,11 @@ def parseYouDaoResponse(response):
         pdb.set_trace()
         queryData = result.get('query')
         print(queryData.encode('utf-8'))
-        # translation = result.get('translation')[0]
-        # explains = result.get('basic').get('explains')[0]
+        translation = result.get('translation')[0]
+        explains = result.get('basic').get('explains')[0]
         # basicExplains = result.get('basic').get('explains')[0]
-        # replyContent = replyContent + "%s\n" + "--有道翻译--\n" + "%s\n" + "解释:%s\n" % (queryData, translation, explains)  
-        return queryData
+        replyContent = "%s\n" + "--有道翻译--\n" + "翻译:%s\n" + "解释:%s\n" % (queryData, translation, explains)  
+        return replyContent
 
 
 class WeixinInterfaceView(View):
