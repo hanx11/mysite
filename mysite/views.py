@@ -81,9 +81,9 @@ def parseYouDaoResponse(response):
         return replyContent
     elif errorCode == 0:
         pdb.set_trace()
-        queryData = result.get('query').encode('utf-8')
-        translation = result.get('translation')[0].encode('utf-8')
-        explains = result.get('basic').get('explains')[0].encode('utf-8')
+        queryData = result.get('query')
+        translation = result.get('translation')[0]
+        explains = result.get('basic').get('explains')[0]
         # basicExplains = result.get('basic').get('explains')[0]
         replyContent = replyContent + "%s\n" + "--有道翻译--\n" + "%s\n" + "解释:%s\n" % (queryData, translation, explains)  
         return replyContent
