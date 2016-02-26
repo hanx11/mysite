@@ -83,9 +83,12 @@ def parseYouDaoResponse(response):
         queryData = result.get('query')
         print(queryData.encode('utf-8'))
         translation = result.get('translation')[0]
-        explains = result.get('basic').get('explains')[0]
+        explains = result.get('basic').get('explains')
+        explain = ''
+        for exp in explains:
+            explain = explain + exp
         # basicExplains = result.get('basic').get('explains')[0]
-        replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explains)  
+        replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
         return replyContent
 
 
