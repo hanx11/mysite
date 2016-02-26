@@ -49,6 +49,7 @@ def parse_msg(request):
     # print(request.body)
     # root = ET.fromstring(recvmsg)
     msg = {}
+    pdb.set_trace()
     content = request.body.decode('utf-8', 'ignore')
     print(content)
     soup = BeautifulSoup(content, 'html.parser')
@@ -61,7 +62,7 @@ def parse_msg(request):
 
 def parseYouDaoResponse(response):
     replyContent = ''
-    # pdb.set_trace()
+    pdb.set_trace()
     content = response.content.decode('utf-8', errors='ignore')
     result = json.loads(content)
     errorCode = result.get('errorCode')
