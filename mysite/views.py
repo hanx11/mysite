@@ -51,7 +51,7 @@ def parse_msg(request):
     msg = {}
     pdb.set_trace()
     content = request.body.decode('utf-8', 'ignore')
-    print(content)
+    print(content.encode('utf-8'))
     soup = BeautifulSoup(content, 'html.parser')
     msg['ToUserName'] = soup.tousername.text
     msg['FromUserName'] = soup.fromusername.text
@@ -137,9 +137,9 @@ class YouDaoInterfaceView(View):
 
     def post(self, request):
         msg = parse_msg(request)      #进行xml解析
-        print(msg['Content'])
+        print(msg['Content'].encode('utf-8'))
         queryStr = msg['Content']
-        print(queryStr)
+        print(queryStr.encode('utf-8'))
         query_data = {'keyfrom':'hanfeng', 'key':'692856525', 'type':'data', 'doctype':'json', 'version':'1.1', 'q':queryStr}
         response = requests.get("http://fanyi.youdao.com/openapi.do", params=query_data)
         replyContent = parseYouDaoResponse(response)
