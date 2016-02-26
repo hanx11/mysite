@@ -49,7 +49,7 @@ def parse_msg(request):
     # print(request.body)
     # root = ET.fromstring(recvmsg)
     msg = {}
-    pdb.set_trace()
+    # pdb.set_trace()
     content = request.body.decode('utf-8', 'ignore')
     print(content.encode('utf-8'))
     soup = BeautifulSoup(content, 'html.parser')
@@ -67,19 +67,19 @@ def parseYouDaoResponse(response):
     errorCode = result.get('errorCode')
     print(errorCode)
     # 错误码检查
-    if errorCode == '20':
+    if errorCode == 20:
         replyContent = "Too long to translate\n"
         return replyContent
-    elif errorCode == '30':
+    elif errorCode == 30:
         replyContent = "Can not be able to translate with effect\n"
         return replyContent
-    elif errorCode == '40':
+    elif errorCode == 40:
         replyContent = "Can not be able to support this language\n"
         return replyContent
-    elif errorCode == '50':
+    elif errorCode == 50:
         replyContent = "Invalid key\n"
         return replyContent
-    elif errorCode == '0':
+    elif errorCode == 0:
         pdb.set_trace()
         queryData = result.get('query').encode('utf-8')
         translation = result.get('translation')[0].encode('utf-8')
