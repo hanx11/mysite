@@ -80,7 +80,6 @@ def parseYouDaoResponse(response):
         replyContent = "Invalid key\n"
         return replyContent
     elif errorCode == 0:
-        pdb.set_trace()
         queryData = result.get('query')
         print(queryData.encode('utf-8'))
         translation = result.get('translation')[0]
