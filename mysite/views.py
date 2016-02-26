@@ -62,7 +62,6 @@ def parse_msg(request):
 
 def parseYouDaoResponse(response):
     replyContent = ''
-    pdb.set_trace()
     content = response.content.decode('utf-8', errors='ignore')
     result = json.loads(content)
     errorCode = result.get('errorCode')
@@ -81,6 +80,7 @@ def parseYouDaoResponse(response):
         replyContent = "Invalid key\n"
         return replyContent
     elif errorCode == '0':
+        pdb.set_trace()
         queryData = result.get('query').encode('utf-8')
         translation = result.get('translation')[0].encode('utf-8')
         explains = result.get('basic').get('explains')[0].encode('utf-8')
