@@ -49,6 +49,8 @@ def parse_msg(request):
     # print(request.body)
     # root = ET.fromstring(recvmsg)
     msg = {}
+    pdb.set_trace()
+    print(request.encoding)
     soup = BeautifulSoup(request.body, 'html.parser')
     msg['ToUserName'] = soup.tousername.text
     msg['FromUserName'] = soup.fromusername.text
