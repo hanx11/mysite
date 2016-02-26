@@ -87,7 +87,7 @@ def parseYouDaoResponse(response):
         explains = result.get('basic').get('explains')[0]
         # basicExplains = result.get('basic').get('explains')[0]
         replyContent = "%s\n" + "--有道翻译--\n" + "翻译:%s\n" + "解释:%s\n" % (queryData, translation, explains)  
-        return replyContent
+        return replyContent.encode('utf-8')
 
 
 class WeixinInterfaceView(View):
