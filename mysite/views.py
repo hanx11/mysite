@@ -82,6 +82,7 @@ def parseYouDaoResponse(response):
     elif errorCode == 0:
         pdb.set_trace()
         queryData = result.get('query')
+        print(queryData.encode('utf-8'))
         translation = result.get('translation')[0]
         explains = result.get('basic').get('explains')[0]
         # basicExplains = result.get('basic').get('explains')[0]
