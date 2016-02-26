@@ -155,7 +155,7 @@ class YouDaoInterfaceView(View):
                        'fromUserName': toUserName,
                        'createTime': createTime,
                        'msgType': msgType,
-                       'content': replyContent,
+                       'content': "hello",
                        },
                        content_type = 'application/xml'
         )
