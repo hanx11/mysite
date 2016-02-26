@@ -13,8 +13,6 @@ from django.views.generic.base import View
 from django.http import HttpResponse
 import pdb
 
-sys.setdefaultencoding('utf8') 
-
 
 TOKEN = "xiaoxiao"
 YOUDAO_KEY_FROM = "hanfeng"
