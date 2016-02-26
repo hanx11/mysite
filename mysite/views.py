@@ -86,7 +86,7 @@ def parseYouDaoResponse(response):
         explains = result.get('basic').get('explains')
         explain = ''
         for exp in explains:
-            explain = explain + ',' + exp
+            explain = explain + '\n\t' + exp
         # basicExplains = result.get('basic').get('explains')[0]
         replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
         return replyContent
