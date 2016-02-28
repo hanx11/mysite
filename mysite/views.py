@@ -27,7 +27,6 @@ def handleRequest(request):
         return None
 
 def checkSignature(request):
-    pdb.set_trace()
     signature = request.GET.get("signature", "")  
     timestamp = request.GET.get("timestamp", "")
     nonce = request.GET.get("nonce", "")
