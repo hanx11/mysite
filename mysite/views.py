@@ -57,10 +57,12 @@ def parse_msg(request):
     return msg
 
 def parseYouDaoResponse(response):
+    # 解析有道翻译返回的内容
     replyContent = ''
     content = response.content.decode('utf-8', errors='ignore')
     result = json.loads(content)
     errorCode = result.get('errorCode')
+    # queryData = result.get('query')
     print(errorCode)
     # 错误码检查
     if errorCode == 20:
