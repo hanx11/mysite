@@ -27,6 +27,7 @@ def handleRequest(request):
         return None
 
 def checkSignature(request):
+    # 检查微信服务器发来的请求
     signature = request.GET.get("signature", "")  
     timestamp = request.GET.get("timestamp", "")
     nonce = request.GET.get("nonce", "")
@@ -44,11 +45,7 @@ def checkSignature(request):
 
 def parse_msg(request):
     # 解析来自微信的请求，request用于传递请求信息
-    # recvmsg = request.body
-    # print(request.body)
-    # root = ET.fromstring(recvmsg)
     msg = {}
-    # pdb.set_trace()
     content = request.body.decode('utf-8', 'ignore')
     print(content.encode('utf-8'))
     soup = BeautifulSoup(content, 'html.parser')
