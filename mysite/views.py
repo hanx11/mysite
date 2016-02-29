@@ -83,7 +83,7 @@ def parseYouDaoResponse(response):
         print(queryData.encode('utf-8'))
         try:
             translation = result.get('translation')[0]
-            explains = result.get('basic').get('explains', 'None')
+            explains = result.get('basic', 'None').get('explains', 'None')
             print(explains)
         except Exception as e:
             raise e
