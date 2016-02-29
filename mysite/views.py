@@ -84,6 +84,7 @@ def parseYouDaoResponse(response):
         try:
             translation = result.get('translation')[0]
             explains = result.get('basic').get('explains', 'None')
+            print(explains)
         except Exception as e:
             raise e
         else:
@@ -91,7 +92,7 @@ def parseYouDaoResponse(response):
                 for exp in explains:
                     explain = explain + '\n\t' + exp
                 replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
-            else:
+            elif explains is None:
                 replyContent = "%s\n--有道翻译--\n翻译:\n%s\n" % (queryData, translation)
         return replyContent
 
