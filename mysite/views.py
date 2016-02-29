@@ -39,7 +39,7 @@ def checkSignature(request):
     tmpstr = tmpstr.encode('utf-8')  
     tmpstr = hashlib.sha1(tmpstr).hexdigest()  
     if tmpstr == signature:
-        return echoStr
+        return "hello"
     else:
         return None 
 
