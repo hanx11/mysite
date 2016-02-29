@@ -78,14 +78,21 @@ def parseYouDaoResponse(response):
         replyContent = "Invalid key\n"
         return replyContent
     elif errorCode == 0:
+        explain = ''
         queryData = result.get('query')
         print(queryData.encode('utf-8'))
-        translation = result.get('translation')[0]
-        explains = result.get('basic').get('explains')
-        explain = ''
-        for exp in explains:
-            explain = explain + '\n\t' + exp
-        replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
+        try:
+            translation = result.get('translation')[0]
+            explains = result.get('basic').get('explains')
+        except Exception as e:
+            raise e
+        else:
+            if explains is not None:
+                for exp in explains:
+                    explain = explain + '\n\t' + exp
+                replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
+            else:
+                replyContent = "%s\n--有道翻译--\n翻译:\n%s\n" % (queryData, translation)
         return replyContent
 
 
