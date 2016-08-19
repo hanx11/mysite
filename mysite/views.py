@@ -19,6 +19,13 @@ YOUDAO_KEY_FROM = "hanfeng"
 YOUDAO_KEY = "692856525"
 YOUDAO_DOC_TYPE = "xml"
 
+
+class HomePageView(View):
+    
+    def get(self, request):
+        return render(request, 'home.html')
+
+
 def handleRequest(request):
     if request.method == 'GET':
         response = HttpResponse(checkSignature(request), content_type="text/plain")
@@ -94,7 +101,8 @@ def parseYouDaoResponse(response):
                 for exp in explains:
                     explain = explain + '\n\t' + exp
                 replyContent = "%s\n--有道翻译--\n翻译:%s\n解释:%s\n" % (queryData, translation, explain)  
-        return replyContent
+        finally:
+            return replyContent
 
 
 class WeixinInterfaceView(View):

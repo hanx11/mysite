@@ -16,16 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from mysite import views
-from mysite.views import handleRequest
-from mysite.views import WeixinInterfaceView, YouDaoInterfaceView
+from . import views
 from django.views.decorators.csrf import csrf_exempt    #remove csrf
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'^$', csrf_exempt(handleRequest), name='handleRequest'),
+    # Home Page
+    url(r'^$', views.HomePageView.as_view(), name='home-page'),
 
     # url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 
-    url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
+    #url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]

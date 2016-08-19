@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            '/Users/hanfeng/workspace/Py/django/mysite/statics/templates',
             '/root/workspace/mysite/mysite/templates',
         ],
         'APP_DIRS': True,
@@ -69,8 +70,6 @@ TEMPLATES = [
         },
     },
 ]
-
-print(TEMPLATES[0]['DIRS'])
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
