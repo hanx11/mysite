@@ -25,7 +25,7 @@ SECRET_KEY = 'f47_yecx0%)%xok+8_reqv=-0*evh=5$3l+j2yp^jdhgeebi58'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [www.liber.tech, liber.tech]
+ALLOWED_HOSTS = ['www.liber.tech', 'liber.tech']
 
 
 # Application definition
@@ -101,4 +101,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/root/workspace/static/'
