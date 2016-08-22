@@ -18,6 +18,7 @@
                 background-color: #b0e0e6;
             }
         </style>
+        <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"></script>
     </head>
     <body>
         <div class="center">
@@ -35,5 +36,13 @@
         <div class="center">
             <!-- <h1>This is div.</h1> -->
         </div>
+
+        <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+                $(this).hide();
+            });
+        });
+        </script>
     </body>
 </html>
