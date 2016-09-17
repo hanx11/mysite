@@ -23,8 +23,12 @@ YOUDAO_DOC_TYPE = "xml"
 class HomePageView(View):
     
     def get(self, request):
-        return render(request, 'home.html')
+        return render(request, 'fourteen-nobody.html')
 
+class IndexPageView(View):
+
+    def get(self, request):
+        return render(request, 'index.html')
 
 def handleRequest(request):
     if request.method == 'GET':
