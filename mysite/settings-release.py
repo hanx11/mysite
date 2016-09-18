@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            '/root/workspace/mysite/templates',
             '/root/workspace/static/',
             '/root/workspace/mysite/mysite/templates',
         ],
