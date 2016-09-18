@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # Home Page
     url(r'^$', views.HomePageView.as_view(), name='home-page'),
-
+    # fourteen-nobody
+    url(r'^fourteen-nobody/$', views.FourteenNobodyView.as_view(), name='fourteen-nobody'),
     # url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
 
     #url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
