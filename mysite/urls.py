@@ -25,7 +25,9 @@ urlpatterns = [
     url(r'^$', views.HomePageView.as_view(), name='home-page'),
     # Blog urls
     url(r'^blog/', include('blog.urls')),
-    
+    # Game urls
+    url(r'^game/', include('game.urls')),
+
     # url(r'^$', csrf_exempt(WeixinInterfaceView.as_view()), name='handleWeiXinRequest'),
     # url(r'^$', csrf_exempt(YouDaoInterfaceView.as_view()), name='handleWeiXinRequest'),
 ]
