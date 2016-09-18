@@ -1,3 +1,10 @@
-from django.shortcuts import render
+# -*- coding:utf-8 -*-
 
-# Create your views here.
+from django.shortcuts import render
+from django.views.generic.base import View
+
+class FourteenNobodyView(View):
+
+    def get(self, request):
+        return render(request, 'fourteen-nobody.html')
+

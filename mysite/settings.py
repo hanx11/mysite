@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f47_yecx0%)%xok+8_reqv=-0*evh=5$3l+j2yp^jdhgeebi58'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.liber.tech', 'liber.tech']
 
@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/Users/hanfeng/workspace/Py/django/mysite/statics/templates',
+            '/Users/hanfeng/workspace/Py/django/mysite/templates',
             '/root/workspace/mysite/mysite/templates',
         ],
         'APP_DIRS': True,
