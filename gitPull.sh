@@ -3,5 +3,5 @@
 git checkout mysite/settings.py
 git pull
 cp mysite/settings-release.py mysite/settings.py
-cp statics/templates/*  ~/workspace/static/
+cp -af statics/*  ~/workspace/static/
 
