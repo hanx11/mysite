@@ -8,3 +8,9 @@ class FourteenNobodyView(View):
     def get(self, request):
         return render(request, 'fourteen-nobody.html')
 
+
+class ArticleView(View):
+
+    def get(self, request):
+        return render(request, '20160920.html')
+
