@@ -9,5 +9,5 @@ urlpatterns = [
     # fourteen-nobody
     url(r'^fourteen-nobody/$', views.FourteenNobodyView.as_view(), name="fourteen-nobody"),
     # 饭局酒色山河文章
-    url(r'^20160920/$', views.ArticleView.as_view(), name="fengtang"),
+    url(r'^cate-wine-beautiful-essay/$', views.ArticleView.as_view(), name="cate-wine-beautiful-essay"),
 ]
