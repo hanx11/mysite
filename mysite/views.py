@@ -30,6 +30,10 @@ class FourteenNobodyView(View):
     def get(self, request):
         return render(request, 'fourteen-nobody.html')
 
+class AboutView(View):
+
+    def get(self, request):
+        return render(request, 'about.html')
 
 def handleRequest(request):
     if request.method == 'GET':

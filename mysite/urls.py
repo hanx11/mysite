@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     # Home Page
     url(r'^$', views.HomePageView.as_view(), name='home-page'),
+    # about
+    url(r'^about/$', views.AboutView.as_view(), name='about'),
     # Blog urls
     url(r'^blog/', include('blog.urls')),
     # Game urls
