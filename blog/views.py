@@ -15,8 +15,8 @@ class ArticleView(View):
         return render(request, '20160920.html')
 
 
-class LittePigView(View):
+class LittlePigView(View):
 
     def get(self, request):
-        return render(request, 'litte-pig-big-road.html')
+        return render(request, 'little-pig-big-road.html')
 
