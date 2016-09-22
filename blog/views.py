@@ -14,3 +14,9 @@ class ArticleView(View):
     def get(self, request):
         return render(request, '20160920.html')
 
+
+class LittePigView(View):
+
+    def get(self, request):
+        return render(request, 'litte-pig-big-road.html')
+

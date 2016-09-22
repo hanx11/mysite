@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^fourteen-nobody/$', views.FourteenNobodyView.as_view(), name="fourteen-nobody"),
     # 饭局酒色山河文章
     url(r'^cate-wine-beautiful-essay/$', views.ArticleView.as_view(), name="cate-wine-beautiful-essay"),
+    # 小猪大道
+    url(r'^litte-pig-big-road/$', views.LittePigView.as_view(), name="little-pig-big-road"),
 ]
