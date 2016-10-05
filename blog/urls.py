@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^cate-wine-beautiful-essay/$', views.ArticleView.as_view(), name="cate-wine-beautiful-essay"),
     # 小猪大道
     url(r'^little-pig-big-road/$', views.LittlePigView.as_view(), name="little-pig-big-road"),
+    # 日常生活的革命
+    url(r'daily-life/$', DailyLifeView.as_view(), name="daily-life"),
 ]

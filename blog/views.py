@@ -20,3 +20,8 @@ class LittlePigView(View):
     def get(self, request):
         return render(request, 'little-pig-big-road.html')
 
+class DailyLifeView(View):
+
+    def get(self, request):
+        return render(request, 'daily-life.html')
+
