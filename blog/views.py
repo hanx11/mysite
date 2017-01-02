@@ -25,3 +25,6 @@ class DailyLifeView(View):
     def get(self, request):
         return render(request, 'daily-life.html')
 
+
+def my_2016(request):
+	return render(request, 'my-2016.html')
